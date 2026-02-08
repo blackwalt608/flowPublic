@@ -8,27 +8,20 @@ export default function PartShowCase({ name }: { name: string }) {
   const cameraPos = useFlowStore((s) => s.cameraPos);
   const isActive = cameraPos === name;
 
-  // Copying original and creating 2 different object
   const { original, ghost } = useMemo(() => {
     const target = nodes[name];
     if (!target) return { original: null, ghost: null };
 
+    // Orijinal Nesne Ayarları
     const originalCopy = target.clone();
     originalCopy.traverse((child) => {
       if (child instanceof THREE.Mesh) {
-        const oldMat = child.material as THREE.MeshStandardMaterial;
-
-        child.material = new THREE.MeshStandardMaterial({
-          map: oldMat.map,
-          color: oldMat.color.clone().multiplyScalar(0.1),
-
-          side: THREE.DoubleSide,
-        });
-
         child.castShadow = true;
         child.receiveShadow = true;
       }
     });
+
+    // Ghost (Hayalet) Nesne Ayarları
     const ghostCopy = target.clone();
     ghostCopy.traverse((child) => {
       if (child instanceof THREE.Mesh) {
@@ -38,6 +31,8 @@ export default function PartShowCase({ name }: { name: string }) {
           opacity: 0.3,
           depthWrite: false,
         });
+        child.castShadow = false;
+        child.receiveShadow = false;
       }
     });
 

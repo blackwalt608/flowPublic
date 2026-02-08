@@ -1,0 +1,22 @@
+import Button from "@/components/ui/Button";
+import Logo from "./Logo";
+
+export default function Nav() {
+  return (
+    <nav className="fixed top-0 left-0 w-full z-50 py-9 h-[10vh]">
+      <ul className="w-[90%] mx-auto flex justify-between items-center">
+        <li>
+          <Logo />
+        </li>
+        <li>
+          <Button
+            fs={25}
+            height={28}
+            text="Contact"
+            href="https://x.com/mertelia"
+          />
+        </li>
+      </ul>
+    </nav>
+  );
+}

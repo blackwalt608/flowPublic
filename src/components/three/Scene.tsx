@@ -3,27 +3,34 @@ import { OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { useEffect, useRef } from "react";
 import { useInView } from "framer-motion";
-import { useFlowStore } from "@/store/store";
+import { useFlowStore, ShowPartArray } from "@/store/store";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Stage from "./Stage";
 import PartCompiler from "./parts/PartCompiler";
 import CameraControls from "./controls/CameraControls";
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Scene() {
   const canvasWrapperRef = useRef<HTMLDivElement>(null);
   const canvasPos = useFlowStore((s) => s.canvasPos);
   const setCanvasPos = useFlowStore((s) => s.setCanvasPos);
-  
+  const inViewLock = useFlowStore((s) => s.inViewLock);
+  const setCameraPos = useFlowStore((s) => s.setCameraPos);
 
-  const isInView = useInView(canvasWrapperRef, { amount: 0.95 });
-
+  const isInView = useInView(canvasWrapperRef, { amount: 0.98 });
   useEffect(() => {
-    if (isInView && canvasPos === 1) {
+    if (isInView && canvasPos !== 2 && !inViewLock) {
       setCanvasPos(2);
+      setCameraPos("focused");
+      if (canvasPos === 3) {
+        setCameraPos(ShowPartArray[ShowPartArray.length - 1]);
+      }
     }
-  }, [isInView, canvasPos, setCanvasPos]);
+  }, [isInView, canvasPos, setCanvasPos, inViewLock, setCameraPos]);
 
   const scrollYRef = useRef(0);
+
   useEffect(() => {
     if (!canvasWrapperRef.current) return;
 
@@ -40,8 +47,7 @@ export default function Scene() {
         zIndex: 10,
       });
       document.body.style.overflow = "hidden";
-    }
-    if (canvasPos === 3) {
+    } else {
       document.body.style.overflow = "";
       gsap.set(wrapper, {
         position: "relative",
@@ -60,7 +66,7 @@ export default function Scene() {
       ref={canvasWrapperRef}
       className="w-screen h-screen overflow-hidden bg-black"
     >
-      <Canvas shadows camera={{ fov: 45, position: [8, 5, 8] }}>
+      <Canvas shadows camera={{ fov: 45, position: [-0.7, 80, -170] }}>
         <CameraControls />
         <Stage />
         <PartCompiler />

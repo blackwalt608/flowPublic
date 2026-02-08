@@ -4,7 +4,6 @@ import { subscribeWithSelector } from "zustand/middleware";
 export const ShowPartArray = [
   "idle",
   "focused",
-  "stage",
   "truss",
   "lineSpeaker",
   "lights",
@@ -24,12 +23,12 @@ export type ShowParts = (typeof ShowPartArray)[number];
 interface State {
   cameraPos: ShowParts;
   canvasPos: 1 | 2 | 3;
-  cameraAniAvailability: boolean;
+  inViewLock: boolean;
 }
 interface Actions {
   setCameraPos: (pos: ShowParts) => void;
   setCanvasPos: (value: 1 | 2 | 3) => void;
-  setCameraAniAvailability: (value: boolean) => void;
+  setInViewLock: (value: boolean) => void;
 }
 
 export const useFlowStore = create<State & Actions>()(
@@ -40,7 +39,7 @@ export const useFlowStore = create<State & Actions>()(
     canvasPos: 1,
     setCanvasPos: (value) => set({ canvasPos: value }),
 
-    cameraAniAvailability: false,
-    setCameraAniAvailability: (value) => set({ cameraAniAvailability: value }),
+    inViewLock: false,
+    setInViewLock: (value: boolean) => set({ inViewLock: value }),
   })),
 );

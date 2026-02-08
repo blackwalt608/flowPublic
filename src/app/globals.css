@@ -3,6 +3,10 @@
 :root {
   background: black;
 }
+
 @theme {
   --color-main: #62ff53;
+  --color-secondary: #62ff53;
+
+  --font-suisse: var(--font-suisse-mono);
 }

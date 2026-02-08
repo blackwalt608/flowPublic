@@ -1,10 +1,19 @@
 import type { Metadata } from "next";
 import { Inter, Caveat } from "next/font/google"; // Caveat'ı ekledik
 import "./globals.css";
-import Nav from "@/components/hero/nav/Nav";
-import Header from "@/components/hero/header/Header";
+import Nav from "@/components/ui/layout/hero/nav/Nav";
+import Header from "@/components/ui/layout/hero/header/Header";
 import Scene from "@/components/three/Scene";
-import Footer from "@/components/footer/footer";
+import Footer from "@/components/ui/layout/footer/footer";
+import localFont from "next/font/local";
+import Hero from "@/components/ui/layout/hero/header/Header";
+import CameraPosSidebar from "@/components/three/controls/CameraPosSidebar";
+
+export const suisseMono = localFont({
+  src: "../assets/fonts/Suisse-Intl-Mono.ttf",
+  variable: "--font-suisse-mono",
+  display: "swap",
+});
 
 const inter = Inter({
   subsets: ["latin"],
@@ -29,11 +38,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} ${caveat.variable} font-sans antialiased overflow-x-hidden bg-black `}
+        className={`${inter.variable} ${caveat.variable} ${suisseMono.className} font-sans antialiased overflow-x-hidden bg-black `}
       >
         <Nav />
-        <Header />
+        <Hero />
         <Scene />
+        <CameraPosSidebar />
         {children}
         <Footer />
       </body>

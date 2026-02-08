@@ -16,24 +16,14 @@ export default function PartAniShowcase({
   const isActive = cameraPos === aniKey;
   const group = useRef<THREE.Group>(null);
 
-  // Copying original and creating 2 different object
   const { original, ghost } = useMemo(() => {
     const target = nodes[name];
     if (!target) return { original: null, ghost: null };
-    const originalCopy = target.clone();
-    originalCopy.traverse((child) => {
-      if (child instanceof THREE.Mesh) {
-        const oldMat = child.material as THREE.MeshStandardMaterial;
-        child.material = new THREE.MeshStandardMaterial({
-          map: oldMat.map,
-          color: oldMat.color.clone().multiplyScalar(0.1),
-          side: THREE.DoubleSide,
-        });
-        child.castShadow = true;
-        child.receiveShadow = true;
-      }
-    });
-    const ghostCopy = target.clone();
+
+    // Her ikisini de klonla
+    const originalCopy = target.clone(true);
+
+    const ghostCopy = target.clone(true);
     ghostCopy.traverse((child) => {
       if (child instanceof THREE.Mesh) {
         child.material = new THREE.MeshBasicMaterial({
@@ -44,6 +34,7 @@ export default function PartAniShowcase({
         });
       }
     });
+
     return { original: originalCopy, ghost: ghostCopy };
   }, [name, nodes]);
 
@@ -75,7 +66,7 @@ export default function PartAniShowcase({
   if (!original || !ghost) return null;
 
   return (
-    <group ref={group} dispose={null}>
+    <group ref={group} dispose={null} position={[0, 0, 0]}>
       <primitive object={original} visible={isActive} name={name} />
       <primitive object={ghost} visible={!isActive} />
     </group>

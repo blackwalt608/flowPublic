@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Inter, Caveat } from "next/font/google"; // Caveat'ı ekledik
 import "./globals.css";
 import Nav from "@/components/ui/layout/hero/nav/Nav";
-import Header from "@/components/ui/layout/hero/header/Header";
 import Scene from "@/components/three/Scene";
 import Footer from "@/components/ui/layout/footer/footer";
 import localFont from "next/font/local";

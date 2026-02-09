@@ -1,7 +1,7 @@
 "use client";
 
 import Button from "@/components/ui/Button";
-import { motion } from "framer-motion"; // Düzeltme: framer-motion import (eğer "motion/react" typo ise)
+import { motion } from "framer-motion";
 
 export default function Hero() {
   return (

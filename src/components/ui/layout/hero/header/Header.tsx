@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 export default function Hero() {
   return (
-    <div className="h-[80vh] w-[90%] mx-auto flex justify-center items-center flex-col gap-12 pt-24 md:pt-0">
+    <div className="h-[75vh] w-[90%] mx-auto flex justify-center items-center flex-col gap-12 pt-24 md:pt-0">
       <motion.div
         className="flex justify-center items-center h-4 gap-2"
         initial={{ opacity: 0, y: 10 }}
@@ -21,7 +21,7 @@ export default function Hero() {
         </div>
       </motion.div>
       <motion.div
-        className="text-white md:text-5xl text-3xl text-center tracking-[-0.13em]"
+        className="text-white md:text-5xl text-2xl text-center tracking-[-0.13em]"
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
@@ -37,10 +37,9 @@ export default function Hero() {
         transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
       >
         <Button
-          fs={25}
-          height={28}
           text="contact@flowstage.com"
           href="https://x.com/mertelia"
+          className="max-md:[--btn-fs:1.1rem] max-md:[--btn-h:1.6rem] md:[--btn-fs:1.56rem] md:[--btn-h:1.75rem]"
         />
       </motion.div>
     </div>

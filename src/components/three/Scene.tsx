@@ -49,7 +49,7 @@ export default function Scene() {
 
   return (
     <>
-      <div className="absolute w-screen h-screen -z-10" />
+      <div className="absolute w-screen h-screen -z-10 " />
 
       <motion.div
         ref={canvasWrapperRef}

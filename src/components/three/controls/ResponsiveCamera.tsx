@@ -12,7 +12,7 @@ export default function ResponsiveCamera() {
       const isPortrait = size.height > size.width;
 
       if (isPortrait) {
-        camera.fov = 90;
+        camera.fov = 110;
       } else {
         camera.fov = 45;
       }

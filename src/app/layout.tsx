@@ -8,6 +8,7 @@ import Footer from "@/components/ui/layout/footer/footer";
 import localFont from "next/font/local";
 import Hero from "@/components/ui/layout/hero/header/Header";
 import CameraPosSidebar from "@/components/three/controls/CameraPosSidebar";
+import MobileWarning from "@/components/three/controls/MobileWarning";
 
 export const suisseMono = localFont({
   src: "../assets/fonts/Suisse-Intl-Mono.ttf",
@@ -40,6 +41,7 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${caveat.variable} ${suisseMono.className} font-sans antialiased overflow-x-hidden bg-black `}
       >
+        <MobileWarning />
         <Nav />
         <Hero />
         <Scene />

@@ -30,7 +30,6 @@ export default function CameraControls() {
       if (index === -1) return;
 
       if (deltaY > 0) {
-        // Aşağı kaydırma / wheel down
         if (index === ShowPartArray.length - 1) {
           setInViewLock(true);
           setCanvasPos(3);
@@ -165,7 +164,7 @@ export default function CameraControls() {
 
     window.setTimeout(() => {
       isCameraAnimating.current = false;
-    }, 1200);
+    }, 900);
   };
 
   const nodeOffsets: Record<
@@ -197,7 +196,7 @@ export default function CameraControls() {
       targetOffset: new THREE.Vector3(-6.101, -1.68, -1.91),
       lightOffset: new THREE.Vector3(-16.101, -11.68, -6.91),
       lightTargetOffset: new THREE.Vector3(-6.101, -1.68, -1.91),
-      ambient: 7,
+      ambient: 2,
     },
     fogMachine: {
       cameraOffset: new THREE.Vector3(-3.0, 5.557, -14.458),
@@ -268,8 +267,8 @@ export default function CameraControls() {
     if (!nodes || !cameraPos) return;
     if (cameraPos === "idle") {
       animateShowcasePosition({
-        cameraPos: new THREE.Vector3(-0.6, 60, -140),
-        cameraTarget: new THREE.Vector3(-0.6, 17, 0),
+        cameraPos: new THREE.Vector3(-0.6, 35, -110),
+        cameraTarget: new THREE.Vector3(-0.6, 30, 0),
         lightPosition: new THREE.Vector3(0, 0, 0),
         lightTarget: new THREE.Vector3(0, 0, 0),
         ambientIntensity: 0,
@@ -278,8 +277,8 @@ export default function CameraControls() {
     }
     if (cameraPos === "focused") {
       animateShowcasePosition({
-        cameraPos: new THREE.Vector3(-0.6, 40, -120),
-        cameraTarget: new THREE.Vector3(-0.6, 25, 0),
+        cameraPos: new THREE.Vector3(-0.6, 35, -110),
+        cameraTarget: new THREE.Vector3(-0.6, 30, 0),
         lightPosition: new THREE.Vector3(0, 0, 0),
         lightTarget: new THREE.Vector3(0, 0, 0),
         ambientIntensity: 0,

@@ -1,12 +1,10 @@
 import type { Metadata } from "next";
-import { Inter, Caveat } from "next/font/google"; // Caveat'ı ekledik
+import { Inter, Caveat } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/ui/layout/hero/nav/Nav";
-import Scene from "@/components/three/Scene";
 import Footer from "@/components/ui/layout/footer/footer";
 import localFont from "next/font/local";
 import Hero from "@/components/ui/layout/hero/header/Header";
-import CameraPosSidebar from "@/components/three/controls/CameraPosSidebar";
 import MobileWarning from "@/components/three/controls/MobileWarning";
 
 export const suisseMono = localFont({
@@ -43,8 +41,7 @@ export default function RootLayout({
         <MobileWarning />
         <Nav />
         <Hero />
-        <Scene />
-        <CameraPosSidebar />
+
         {children}
         <Footer />
       </body>

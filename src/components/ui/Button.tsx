@@ -3,15 +3,15 @@ import { motion } from "framer-motion";
 import { ReactNode } from "react";
 
 interface ButtonProps {
-  fs?: number; // Opsiyonel
-  height?: number; // Opsiyonel
-  text: string; // Zorunlu (Yazısız buton olmaz)
-  href: string; // Zorunlu
-  className?: string; // Opsiyonel (Mobil hack'leri buraya gelecek)
+  fs?: number;
+  height?: number;
+  text: string;
+  href: string;
+  className?: string;
 }
 
 export default function Button({
-  fs = 25, // Default değerler
+  fs = 25,
   height = 28,
   text,
   href,

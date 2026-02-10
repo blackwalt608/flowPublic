@@ -6,7 +6,6 @@ import { useMemo, useRef, useLayoutEffect, useEffect } from "react";
 import { useGLTF } from "@react-three/drei";
 import { useFlowStore } from "@/store/store";
 
-// --- Shader Tanımları ---
 const vertexShader = /* glsl */ `
   varying vec2 vUv;
   void main() {
@@ -92,7 +91,6 @@ export default function VideoPlane() {
     }
   }, [isActive, video]);
 
-  // Dünya Pozisyonu ve Offset
   useLayoutEffect(() => {
     if (nodes.mainScreen && groupRef.current) {
       const worldPos = new THREE.Vector3();
@@ -107,7 +105,6 @@ export default function VideoPlane() {
     }
   }, [nodes, offset]);
 
-  // Animasyon ve Yumuşak Geçişler
   useFrame((state, delta) => {
     if (materialRef.current) {
       const u = materialRef.current.uniforms;

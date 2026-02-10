@@ -1,6 +1,6 @@
 "use client";
 import { Canvas } from "@react-three/fiber";
-import { useEffect, useRef, useLayoutEffect, useState } from "react"; // useLayoutEffect ekledik
+import { useEffect, useRef, useLayoutEffect, useState } from "react";
 import { useInView, motion } from "framer-motion";
 import { useFlowStore, ShowPartArray } from "@/store/store";
 import Stage from "./Stage";
@@ -49,8 +49,6 @@ export default function Scene() {
 
   return (
     <>
-      <div className="absolute w-screen h-screen -z-10 " />
-
       <motion.div
         ref={canvasWrapperRef}
         style={{

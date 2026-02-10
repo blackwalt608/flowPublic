@@ -18,7 +18,6 @@ export default function CameraControls() {
   useEffect(() => {
     if (canvasPos !== 2) return;
 
-    // Mobilde parmağın başladığı yer
     let touchStartY = 0;
 
     const handleInput = (deltaY: number) => {
@@ -138,7 +137,7 @@ export default function CameraControls() {
     lightTarget: THREE.Vector3;
     ambientIntensity: number;
   };
-
+  // ANIMATE FUNCTION
   const animateShowcasePosition = ({
     cameraPos,
     cameraTarget,

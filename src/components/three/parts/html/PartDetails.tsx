@@ -1,5 +1,5 @@
 import DetailSvg from "./DetailSvg";
-import { motion } from "framer-motion"; // motion/react kullanıyorsan öyle bırakabilirsin
+import { motion } from "motion/react";
 
 export default function PartDetails({
   header,

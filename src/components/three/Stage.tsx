@@ -5,7 +5,6 @@ import * as THREE from "three";
 export default function Stage() {
   const { nodes } = useGLTF("/models/stage.glb");
 
-  // Copying original
   const ghostScene = useMemo(() => {
     const sceneCopy = nodes.stage.clone();
 

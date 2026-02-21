@@ -38,7 +38,7 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${caveat.variable} ${suisseMono.className} font-sans antialiased overflow-x-hidden bg-black `}
       >
-        <MobileWarning />
+        {/* <MobileWarning /> */}
         <Nav />
         <Hero />
 

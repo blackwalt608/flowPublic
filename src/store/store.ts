@@ -41,5 +41,6 @@ export const useFlowStore = create<State & Actions>()(
 
     inViewLock: false,
     setInViewLock: (value: boolean) => set({ inViewLock: value }),
+    
   })),
 );

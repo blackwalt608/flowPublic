@@ -1,6 +1,6 @@
 "use client";
 import { Canvas } from "@react-three/fiber";
-import { useEffect, useRef, useLayoutEffect, useState } from "react";
+import { useEffect, useRef, useLayoutEffect } from "react";
 import { useInView, motion } from "framer-motion";
 import { useFlowStore, ShowPartArray } from "@/store/store";
 import Stage from "./Stage";
@@ -8,6 +8,7 @@ import PartCompiler from "./parts/PartCompiler";
 import CameraControls from "./controls/CameraControls";
 import VideoPlane from "./parts/VideoPlane";
 import ResponsiveCamera from "./controls/ResponsiveCamera";
+import { useMediaQuery } from "react-responsive";
 
 export default function Scene() {
   const canvasWrapperRef = useRef<HTMLDivElement>(null);
@@ -16,11 +17,7 @@ export default function Scene() {
   const inViewLock = useFlowStore((s) => s.inViewLock);
   const setCameraPos = useFlowStore((s) => s.setCameraPos);
 
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    setIsMobile(window.innerWidth < 768);
-  }, []);
+  const isMobile = useMediaQuery({ maxWidth: 767 });
 
   const isInView = useInView(canvasWrapperRef, {
     amount: isMobile ? 0.8 : 0.98,

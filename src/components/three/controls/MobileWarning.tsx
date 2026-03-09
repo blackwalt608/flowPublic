@@ -1,20 +1,15 @@
 "use client";
 
-import { useEffect, useState } from "react";
+// CURRENTLY UNUSED COMPONENT
+// Mobile warning is not needed at this time.
+// Kept for potential future use.
+
+import { useMediaQuery } from "react-responsive";
+import { useState } from "react";
 
 export default function MobileWarning() {
-  const [isMobile, setIsMobile] = useState(false);
+  const isMobile = useMediaQuery({ maxWidth: 768 });
   const [visible, setVisible] = useState(true);
-
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
 
   if (!isMobile || !visible) return null;
 
